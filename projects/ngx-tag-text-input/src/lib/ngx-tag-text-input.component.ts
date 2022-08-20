@@ -17,7 +17,6 @@ import {
 export class NgxTagTextInputComponent {
   @Input() inputLabel: string = '';
   @Input() tags: string[] = [];
-  @Input() url: string = '';
   @Output() inputContentEmit = new EventEmitter<string>();
   @ViewChild('childInput') childInput: ElementRef;
   @ViewChild('parentInput') parentInput: ElementRef;
@@ -26,14 +25,15 @@ export class NgxTagTextInputComponent {
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.url) this.formatInputText(this.url);
+    if (this.inputLabel) this.formatInputText(this.inputLabel);
   }
   ngAfterViewInit(): void {
-    if (this.url) this.childInput.nativeElement.innerHTML = this.url;
+    if (this.inputLabel)
+      this.childInput.nativeElement.innerHTML = this.inputLabel;
   }
 
   formatInputText(text: string) {
-    this.url = this.url
+    this.inputLabel = this.inputLabel
       .replaceAll(
         '{',
         '<span contenteditable="false" class="badge badge-pill badge-primary-light pointer p-1 m-1 font-size-sm">'
@@ -103,16 +103,16 @@ export class NgxTagTextInputComponent {
   }
 
   preventImagePasted() {
-    let url = this.childInput.nativeElement.innerHTML;
-    if (url.indexOf('<img') != -1) {
-      url = url.substring(0, url.indexOf('<img'));
-      this.childInput.nativeElement.innerHTML = url;
+    let inputText = this.childInput.nativeElement.innerHTML;
+    if (inputText.indexOf('<img') != -1) {
+      inputText = inputText.substring(0, inputText.indexOf('<img'));
+      this.childInput.nativeElement.innerHTML = inputText;
       this.placeCaretAtEnd(this.childInput.nativeElement);
     }
   }
 
   changeEvent() {
-    let url = this.childInput.nativeElement.innerHTML
+    let inputText = this.childInput.nativeElement.innerHTML
       .replaceAll(
         '<span contenteditable="false" class="badge badge-pill badge-primary-light pointer p-1 m-1 font-size-sm">',
         '{'
@@ -120,8 +120,8 @@ export class NgxTagTextInputComponent {
       .replaceAll('</span>', '}')
       .replace(/(\r\n|\n|\r)/gm, '');
 
-    url = url.replace('&nbsp;', '');
-    this.inputContentEmit.emit(url);
+    inputText = inputText.replace('&nbsp;', '');
+    this.inputContentEmit.emit(inputText);
   }
 
   placeCaretAtEnd(el: any) {
