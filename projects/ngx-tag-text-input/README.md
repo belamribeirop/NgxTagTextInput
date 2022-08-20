@@ -1,24 +1,26 @@
 # NgxTagTextInput
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+This library is used to build texts with predefined tags. For example, urls with specific parameters.
 
-## Code scaffolding
+## Started Guide:
 
-Run `ng generate component component-name --project NgxTagTextInput` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project NgxTagTextInput`.
-> Note: Don't forget to add `--project NgxTagTextInput` or else it will be added to the default project in your `angular.json` file. 
+To add this package to your project:
+```
+npm i ngx-tag-text-input
+```
+## Inputs
 
-## Build
+inputLabel: The label for the input field
+tags: An string array with the tag options
+inputValue: An initial value for the input field
 
-Run `ng build NgxTagTextInput` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Events:
+  inputContentEmit: The new value of the input field
 
-## Publishing
 
-After building your library with `ng build NgxTagTextInput`, go to the dist folder `cd dist/ngx-tag-text-input` and run `npm publish`.
+## It was developed by:
+- Carlos Barros
+- Isabela Ribeiro
+- Italo Doria
 
-## Running unit tests
-
-Run `ng test NgxTagTextInput` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+**Feel free to contribute.**
