@@ -1,0 +1,39 @@
+```
+<div class="row">
+  <div class="col">
+    <div class="form-group">
+      <label for="{{ inputLabel }}" class="control-label">
+        {{ inputLabel | translate }}
+      </label>
+      <div
+        #parentInput
+        class="form-control"
+        style="height: fit-content; min-height: 2.3rem"
+        (click)="focusSpan()"
+      >
+        <span
+          #childInput
+          contenteditable="true"
+          (mouseup)="handleCursorPosition()"
+          (keyup)="handleCursorPosition()"
+          (focus)="handleChildInputFocus()"
+        >
+          <!-- &nbsp; -->
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row m-2 p-3 bg-gray-light rounded badge-box">
+  <div class="col-auto" *ngFor="let t of tags">
+    <span
+      contenteditable="false"
+      class="badge badge-pill badge-primary-light pointer p-1 m-1 font-size-sm"
+      (click)="handleTagClick($event)"
+    >
+      {{ t }}
+    </span>
+  </div>
+</div>
+```

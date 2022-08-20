@@ -3,5 +3,36 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "NgxTagTextInput": {
+      "projectType": "library",
+      "root": "projects/ngx-tag-text-input",
+      "sourceRoot": "projects/ngx-tag-text-input/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-tag-text-input/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-tag-text-input/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-tag-text-input/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-tag-text-input/src/test.ts",
+            "tsConfig": "projects/ngx-tag-text-input/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-tag-text-input/karma.conf.js"
+          }
+        }
+      }
+    }
   }
 }
