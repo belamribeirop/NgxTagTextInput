@@ -16,6 +16,7 @@ import {
 })
 export class NgxTagTextInputComponent {
   @Input() inputLabel: string = '';
+  @Input() inputValue: string = '';
   @Input() tags: string[] = [];
   @Output() inputContentEmit = new EventEmitter<string>();
   @ViewChild('childInput') childInput: ElementRef;
@@ -25,15 +26,15 @@ export class NgxTagTextInputComponent {
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.inputLabel) this.formatInputText(this.inputLabel);
+    if (this.inputValue) this.formatInputText(this.inputValue);
   }
   ngAfterViewInit(): void {
-    if (this.inputLabel)
-      this.childInput.nativeElement.innerHTML = this.inputLabel;
+    if (this.inputValue)
+      this.childInput.nativeElement.innerHTML = this.inputValue;
   }
 
   formatInputText(text: string) {
-    this.inputLabel = this.inputLabel
+    this.inputValue = this.inputValue
       .replaceAll(
         '{',
         '<span contenteditable="false" class="badge badge-pill badge-primary-light pointer p-1 m-1 font-size-sm">'
